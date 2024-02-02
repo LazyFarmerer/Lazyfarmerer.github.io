@@ -1,0 +1,52 @@
+<div id="shortcuts_input">asdasdasd</div>
+<head>
+    <meta charset="UTF-8">
+    <title>테스트</title>
+    <style>
+        .body_color {
+            background-color: white;  /* aqua dodgerblue */
+        }
+        #shortcuts_input {
+            color: blue;
+            opacity: 1;
+            display: none;
+        }
+        .margin_all {
+            padding: 10px;
+            margin: 50px;
+        }
+
+        .btn_size {
+            width: 70px;
+            height: 50px;
+        }
+        #show_input_text {
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body class="body_color">
+    <p class="margin_all">
+        이녀석 단축어로 "<span id="show_input_text"></span>" 라고 입력했어!!
+    </p>
+    <div>
+        <button class="margin_all btn_size" onclick="add_data(1, 0)">버튼 a</button>
+        <button class="margin_all btn_size" onclick="add_data(0, 1)">버튼 b</button>
+    </div>
+    <div class="margin_all" id="result_print"></div>
+    <script>
+        const shortcuts_input = document.getElementById("shortcuts_input");
+        const show_input_text = document.getElementById("show_input_text");
+        const result_print = document.getElementById("result_print");
+        show_input_text.innerText = shortcuts_input.innerText;
+        const data = {};
+        data[shortcuts_input.innerText] = { a: 0, b: 0 };
+
+        function add_data(a, b) {
+            data[shortcuts_input.innerText].a += a;
+            data[shortcuts_input.innerText].b += b;
+
+            result_print.innerText = JSON.stringify(data);
+        }
+    </script>
+</body>
